@@ -1,0 +1,84 @@
+﻿@*
+    Views/Home/Dashboard.cshtml
+*@
+@{
+	ViewData["Title"] = "功能表";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <!-- 任務創建與管理 -->
+    <div class="col-md-3 mb-3">
+        <a asp-controller="Task" asp-action="Create" class="btn btn-primary w-100">任務創建與管理</a>
+    </div>
+    <!-- 任務分類 -->
+    <div class="col-md-3 mb-3">
+        <a asp-controller="Task" asp-action="Categories" class="btn btn-secondary w-100">任務分類</a>
+    </div>
+    <!-- 日曆視圖與時間表 -->
+    <div class="col-md-3 mb-3">
+        <a asp-controller="Calendar" asp-action="Index" class="btn btn-info w-100">日曆視圖與時間表</a>
+    </div>
+    <!-- 通知與提醒 -->
+    <div class="col-md-3 mb-3">
+        <a asp-controller="Notification" asp-action="Index" class="btn btn-warning w-100">通知與提醒</a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- 搜索與篩選 -->
+    <div class="col-md-3 mb-3">
+        <a asp-controller="Task" asp-action="Search" class="btn btn-dark w-100">搜索與篩選</a>
+    </div>
+    <!-- 任務進度追蹤與子任務 -->
+    <div class="col-md-3 mb-3">
+        <a asp-controller="Task" asp-action="Progress" class="btn btn-success w-100">任務進度追蹤與子任務</a>
+    </div>
+    <!-- 多裝置同步 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-primary w-100" disabled>多裝置同步<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+    <!-- 數據備份 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-secondary w-100" disabled>數據備份<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+</div>
+
+<div class="row">
+    <!-- 用戶介面設計 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-success w-100" disabled>用戶介面設計<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+    <!-- 任務委託 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-info w-100" disabled>任務委託<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+    <!-- 任務接受與拒絕 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-warning w-100" disabled>任務接受與拒絕<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+    <!-- 任務評論與溝通 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-danger w-100" disabled>任務評論與溝通<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+</div>
+
+<div class="row">
+    <!-- 權限管理 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-dark w-100" disabled>權限管理<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+    <!-- 進度追蹤與報告 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-primary w-100" disabled>進度追蹤與報告<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+    <!-- 任務歷史記錄 -->
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-outline-secondary w-100" disabled>任務歷史記錄<span class="badge bg-secondary ms-1">待添加</span></button>
+    </div>
+    <!-- 空位，可在未來擴充其他功能 -->
+    <div class="col-md-3 mb-3">
+        <!-- 其他功能按鈕 -->
+    </div>
+</div>

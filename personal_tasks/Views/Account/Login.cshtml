@@ -1,0 +1,40 @@
+﻿@model personal_tasks.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "登入";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- 使用 TagHelper 自動設定 Controller 與 Action -->
+<form asp-controller="Account" asp-action="Login" method="post">
+    @* 防止 CSRF 攻擊，產生 Anti-Forgery Token *@
+    @Html.AntiForgeryToken()
+
+    <!-- 顯示驗證錯誤訊息 -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- 使用者名稱欄位 -->
+    <div class="form-group">
+        <label asp-for="Username" class="control-label"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <!-- 密碼欄位 -->
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    
+    <!-- 提交按鈕 -->
+    <button type="submit" class="btn btn-primary">登入</button>
+</form>
+
+@section Scripts {
+    @* 引入客戶端驗證的腳本 (若專案中已有 _ValidationScriptsPartial partial view) *@
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
