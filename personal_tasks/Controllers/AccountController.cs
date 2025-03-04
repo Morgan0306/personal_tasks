@@ -48,9 +48,11 @@ namespace personal_tasks.Controllers
                     // 建立使用者的 Claim 列表
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, user.UserName),
+                        new Claim(ClaimTypes.Name, user.Name ?? user.UserName),
                         // 根據需要可以加入其他 Claim
-                        new Claim("Permissions", user.Permissions.ToString())
+                        new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
+
+                        new Claim("RoleId", user.RoleId.ToString())
                     };
 
                     var claimsIdentity = new ClaimsIdentity(
@@ -70,7 +72,7 @@ namespace personal_tasks.Controllers
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
@@ -110,7 +112,7 @@ namespace personal_tasks.Controllers
                 {
                     UserName = model.Username,
                     PasswordHash = hashedPassword,
-                    Permissions = 0   // 預設最低權限，可依需求修改
+                    RoleId = 0   // 預設最低權限，可依需求修改
                 };
 
                 _context.Users.Add(newUser);

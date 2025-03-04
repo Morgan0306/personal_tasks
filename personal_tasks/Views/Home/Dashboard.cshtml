@@ -1,84 +1,133 @@
-﻿@*
-    Views/Home/Dashboard.cshtml
-*@
-@{
-	ViewData["Title"] = "功能表";
+﻿@{
+    ViewData["Title"] = "功能表";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container">
+    
+    <div class="container">
 
-<div class="row">
-    <!-- 任務創建與管理 -->
-    <div class="col-md-3 mb-3">
-        <a asp-controller="Task" asp-action="Create" class="btn btn-primary w-100">任務創建與管理</a>
-    </div>
-    <!-- 任務分類 -->
-    <div class="col-md-3 mb-3">
-        <a asp-controller="Task" asp-action="Categories" class="btn btn-secondary w-100">任務分類</a>
-    </div>
-    <!-- 日曆視圖與時間表 -->
-    <div class="col-md-3 mb-3">
-        <a asp-controller="Calendar" asp-action="Index" class="btn btn-info w-100">日曆視圖與時間表</a>
-    </div>
-    <!-- 通知與提醒 -->
-    <div class="col-md-3 mb-3">
-        <a asp-controller="Notification" asp-action="Index" class="btn btn-warning w-100">通知與提醒</a>
+        <!-- 新增：搜尋橫條與任務新增功能橫條 -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <form class="d-flex" method="get" action="@Url.Action("TaskList", "Task")">
+                    <input class="form-control me-2" type="search" name="keyword" placeholder="請輸入關鍵字搜尋" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">搜尋</button>
+                </form>
+            </div>
+            <div class="col-md-6 text-end">
+                <a href="@Url.Action("Create", "Task")" class="btn btn-primary">新增任務</a>
+            </div>
+        </div>
+                
+        <!-- 新增：任務類別按鈕橫條 -->
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="btn-group" role="group" aria-label="任務類別">
+                    <button type="button" class="btn btn-secondary">全部</button>
+                    <button type="button" class="btn btn-secondary">人事</button>
+                    <button type="button" class="btn btn-secondary">會計</button>
+                    <button type="button" class="btn btn-secondary">開發</button>
+                    <button type="button" class="btn btn-secondary">測試</button>
+                    <!-- 若有其他動態類別，可從 ViewModel 輸出 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 新增：分頁顯示任務列表頁數 -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-6 text-end">
+                <!-- 新增：切換顯示模式按鈕 -->
+                <div class="btn-group" role="group" aria-label="任務顯示模式">
+                    <button type="button" class="btn btn-outline-primary active" id="btnListView">任務列表</button>
+                    <button type="button" class="btn btn-outline-primary" id="btnCalendarView">任務日曆</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新增：任務列表 -->
+        <div class="row" id="taskListSection">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>任務類別</th>
+                            <th>任務標題</th>
+                            <th>內容摘要</th>
+                            <th>截止日期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>人事</td>
+                            <td>員工訓練計畫</td>
+                            <td>制定員工訓練計畫，提升團隊實戰能力...</td>
+                            <td>2023-12-01</td>
+                        </tr>
+                        <tr>
+                            <td>會計</td>
+                            <td>年度財務報告</td>
+                            <td>編制並審核上一年度的財務報表...</td>
+                            <td>2023-12-15</td>
+                        </tr>
+                        <tr>
+                            <td>開發</td>
+                            <td>新功能上線</td>
+                            <td>推出新版本前完成 API 優化並進行測試...</td>
+                            <td>2023-12-20</td>
+                        </tr>
+                        <!-- 重複列舉更多任務項目 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 新增：任務日曆區 (預留，用於日曆顯示) -->
+        <div class="row d-none" id="taskCalendarSection">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">任務日曆</div>
+                    <div class="card-body">
+                        <!-- 這裡可整合第三方日曆插件並展示日曆 -->
+                        <p>這邊顯示任務日曆內容...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 原有的卡片區塊也可根據需求保留或移至其他位置 -->
     </div>
 </div>
+<script>
+    document.getElementById("btnListView").addEventListener("click", function(){
+        // 切換按鈕樣式
+        this.classList.add("active");
+        document.getElementById("btnCalendarView").classList.remove("active");
 
-<div class="row">
-    <!-- 搜索與篩選 -->
-    <div class="col-md-3 mb-3">
-        <a asp-controller="Task" asp-action="Search" class="btn btn-dark w-100">搜索與篩選</a>
-    </div>
-    <!-- 任務進度追蹤與子任務 -->
-    <div class="col-md-3 mb-3">
-        <a asp-controller="Task" asp-action="Progress" class="btn btn-success w-100">任務進度追蹤與子任務</a>
-    </div>
-    <!-- 多裝置同步 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-primary w-100" disabled>多裝置同步<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-    <!-- 數據備份 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-secondary w-100" disabled>數據備份<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-</div>
+        // 顯示任務列表，隱藏日曆
+        document.getElementById("taskListSection").classList.remove("d-none");
+        document.getElementById("taskCalendarSection").classList.add("d-none");
+    });
 
-<div class="row">
-    <!-- 用戶介面設計 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-success w-100" disabled>用戶介面設計<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-    <!-- 任務委託 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-info w-100" disabled>任務委託<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-    <!-- 任務接受與拒絕 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-warning w-100" disabled>任務接受與拒絕<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-    <!-- 任務評論與溝通 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-danger w-100" disabled>任務評論與溝通<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-</div>
+    document.getElementById("btnCalendarView").addEventListener("click", function(){
+        // 切換按鈕樣式
+        this.classList.add("active");
+        document.getElementById("btnListView").classList.remove("active");
 
-<div class="row">
-    <!-- 權限管理 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-dark w-100" disabled>權限管理<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-    <!-- 進度追蹤與報告 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-primary w-100" disabled>進度追蹤與報告<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-    <!-- 任務歷史記錄 -->
-    <div class="col-md-3 mb-3">
-        <button class="btn btn-outline-secondary w-100" disabled>任務歷史記錄<span class="badge bg-secondary ms-1">待添加</span></button>
-    </div>
-    <!-- 空位，可在未來擴充其他功能 -->
-    <div class="col-md-3 mb-3">
-        <!-- 其他功能按鈕 -->
-    </div>
-</div>
+        // 顯示日曆，隱藏任務列表
+        document.getElementById("taskCalendarSection").classList.remove("d-none");
+        document.getElementById("taskListSection").classList.add("d-none");
+    });
+</script>

@@ -1,5 +1,7 @@
 using System.Diagnostics;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using personal_tasks.Models;
 
 namespace personal_tasks.Controllers
@@ -7,7 +9,7 @@ namespace personal_tasks.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+       
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -15,15 +17,14 @@ namespace personal_tasks.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return RedirectToAction("Index", "Dashboard");
         }
 
         public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult Dashboard()
         {
             return View();
         }

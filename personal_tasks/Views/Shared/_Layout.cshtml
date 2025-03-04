@@ -1,4 +1,30 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@functions {
+    public void SetUserRoleId()
+    {
+        int userId = -1;
+        var claim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (claim != null)
+        {
+            int.TryParse(claim.Value, out userId);
+        }
+
+        // 這邊最好是呼叫資料庫，例如通過依賴注入取得某個服務取得當前使用者資訊
+        // 如果不能直接在 _Layout 中使用 _context，可以考慮把用戶角色以 Claim 的形式放到票證中
+        // 或者在每個 Controller Action 裡都設定 ViewBag.UserRoleId
+    }
+}
+
+@{
+    // 假如你有辦法存取 _context 或確定從票證取得角色
+    // 可嘗試從 Claims 中讀取，例如：
+    var roleClaim = User.FindFirst("RoleId");
+    ViewBag.userRoleId = roleClaim != null ? int.Parse(roleClaim.Value) : 0;
+}
+@{
+    var userRoleId = ViewBag.userRoleId as int? ?? 0;
+}
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="utf-8" />
@@ -15,8 +41,24 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Dashboard", "Home")">功能表</a>
+                        <a class="nav-link" href="@Url.Action("Index", "Dashboard")">任務列表</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Reports", "Home")">報告與統計</a>
+                    </li>
+                    @if (userRoleId == 7 || userRoleId == 6)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("DepartmentData", "Admin")">
+                                部門數據
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("AccountManagement", "Admin")">
+                                帳號管理
+                            </a>
+                        </li>
+                    }
                     <!-- 可加入其他選項 -->
                 </ul>
                 <ul class="navbar-nav">
@@ -30,15 +72,6 @@
                             <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
                                 <button type="submit" class="nav-link btn btn-link">登出</button>
                             </form>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="Register">註冊</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="Login">登入</a>
                         </li>
                     }
                 </ul>

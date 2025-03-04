@@ -3,38 +3,38 @@
     ViewData["Title"] = "登入";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <h2 class="text-center mb-4">任務管理系統</h2>
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <!-- 顯示驗證錯誤 -->
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-<!-- 使用 TagHelper 自動設定 Controller 與 Action -->
-<form asp-controller="Account" asp-action="Login" method="post">
-    @* 防止 CSRF 攻擊，產生 Anti-Forgery Token *@
-    @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label">帳號</label>
+                <input asp-for="Username" class="form-control" placeholder="請輸入帳號" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
 
-    <!-- 顯示驗證錯誤訊息 -->
-    <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">密碼</label>
+                <input asp-for="Password" class="form-control" type="password" placeholder="請輸入密碼" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
 
-    <!-- 使用者名稱欄位 -->
-    <div class="form-group">
-        <label asp-for="Username" class="control-label"></label>
-        <input asp-for="Username" class="form-control" />
-        <span asp-validation-for="Username" class="text-danger"></span>
+            <button type="submit" class="btn btn-primary w-100">登入</button>
+        </form>
+
+        <div class="mt-3 text-center">
+            <a asp-controller="Account" asp-action="ForgotPassword">忘記密碼？</a>
+            <br />
+            <a href="mailto:admin@example.com">首次使用？請聯繫管理員</a>
+        </div>
     </div>
-
-    <!-- 密碼欄位 -->
-    <div class="form-group">
-        <label asp-for="Password" class="control-label"></label>
-        <input asp-for="Password" class="form-control" type="password" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    
-    <!-- 提交按鈕 -->
-    <button type="submit" class="btn btn-primary">登入</button>
-</form>
+</div>
 
 @section Scripts {
-    @* 引入客戶端驗證的腳本 (若專案中已有 _ValidationScriptsPartial partial view) *@
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <!-- 啟用 jQuery 驗證 -->
+    <partial name="_ValidationScriptsPartial" />
 }
 

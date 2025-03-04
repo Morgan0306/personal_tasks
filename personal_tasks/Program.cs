@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using personal_tasks.Helpers;
 using personal_tasks.Models;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
