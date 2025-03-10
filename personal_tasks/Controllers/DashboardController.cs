@@ -16,9 +16,9 @@ namespace personal_tasks.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Index()
-        { 
-            
+        public IActionResult Index()
+        {
+
             return View("~/Views/Home/Dashboard.cshtml");
         }
     }

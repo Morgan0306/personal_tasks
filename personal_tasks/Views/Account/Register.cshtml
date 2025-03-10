@@ -67,12 +67,12 @@
 
             <!-- 權限分級選單 -->
             <div class="mb-3">
-                <label asp-for="RoleId" class="form-label">權限分級</label>
+                <label asp-for="RoleId" class="form-label">權限</label>
                 @if (Model.IsDepartmentManager)
                 {
                     <!-- 若由部門主管操作，則只能新增員工，直接固定顯示 -->
                     <input type="text" class="form-control" value="員工" readonly="readonly" />
-                    <input type="hidden" asp-for="RoleId" value="員工" />
+                    <input type="hidden" asp-for="RoleId" value="5" />
                 }
                 else
                 {

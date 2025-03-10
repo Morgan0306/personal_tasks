@@ -1,0 +1,18 @@
+﻿@model personal_tasks.Models.Users
+
+@{
+    ViewData["Title"] = "刪除帳號";
+}
+
+<h2>刪除帳號</h2>
+
+<div>
+    <p>確定刪除帳號：<strong>@Model.UserName (@Model.Name)</strong> 嗎？</p>
+</div>
+
+<form asp-action="DeleteAccountConfirmed" method="post">
+    <input type="hidden" asp-for="UserID" />
+    <button type="submit" class="btn btn-danger">是，刪除</button>
+    <a asp-action="AccountManagement" class="btn btn-secondary">取消</a>
+</form>
+

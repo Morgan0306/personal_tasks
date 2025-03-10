@@ -35,10 +35,10 @@ namespace personal_tasks.ViewModels
         public int? DepartmentId { get; set; }
 
         // 若是部門主管註冊帳號，則傳入其預設部門名稱，供 readonly 使用者參考
-        public string DepartmentName { get; set; }
+        public string? DepartmentName { get; set; }
 
         // 提供下拉選單使用，內容例如「人事」、「會計」等
-        public IEnumerable<SelectListItem> DepartmentList { get; set; }
+        public IEnumerable<SelectListItem> DepartmentList { get; set; } = Enumerable.Empty<SelectListItem>();
 
         // 權限分級選單：主要管理者可以下拉選擇老闆、部門主管、員工；
         // 部門主管則只能建立員工帳號，所以 RoleId 固定為「員工」
@@ -46,7 +46,7 @@ namespace personal_tasks.ViewModels
         public string RoleId { get; set; }
 
         // 提供下拉選單使用，內容例如「老闆」、「部門主管」、「員工」
-        public IEnumerable<SelectListItem> RoleList { get; set; }
+        public IEnumerable<SelectListItem> RoleList { get; set; } = Enumerable.Empty<SelectListItem>();
 
         // 指示當前註冊操作是否由部門主管執行（若為 true，則部門與角色欄位均固定）
         public bool IsDepartmentManager { get; set; }

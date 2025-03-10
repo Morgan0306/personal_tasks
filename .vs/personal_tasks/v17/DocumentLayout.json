@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\views\\admin\\editaccount.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\views\\admin\\editaccount.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\viewmodels\\editaccountviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\viewmodels\\editaccountviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\views\\admin\\accountmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\views\\admin\\accountmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\helpers\\simplehash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\helpers\\simplehash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\viewmodels\\accountmanagementviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\viewmodels\\accountmanagementviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|g:\\sideproject\\c# asp.net\\personal_tasks\\personal_tasks\\personal_tasks\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E9CC59B-5CAF-4A18-B4F3-955648A9EBF0}|personal_tasks\\personal_tasks.csproj|solutionrelative:personal_tasks\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,19 +38,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Views\\Home\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "personal_tasks\\Views\\Home\\Dashboard.cshtml",
-              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Views\\Home\\Dashboard.cshtml",
-              "RelativeToolTip": "personal_tasks\\Views\\Home\\Dashboard.cshtml",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAQwE8AAAAdAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "EditAccount.cshtml",
+              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Views\\Admin\\EditAccount.cshtml",
+              "RelativeDocumentMoniker": "personal_tasks\\Views\\Admin\\EditAccount.cshtml",
+              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Views\\Admin\\EditAccount.cshtml",
+              "RelativeToolTip": "personal_tasks\\Views\\Admin\\EditAccount.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-04T08:04:34.195Z",
+              "WhenOpened": "2025-03-10T08:36:21.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditAccountViewModel.cs",
+              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\ViewModels\\EditAccountViewModel.cs",
+              "RelativeDocumentMoniker": "personal_tasks\\ViewModels\\EditAccountViewModel.cs",
+              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\ViewModels\\EditAccountViewModel.cs",
+              "RelativeToolTip": "personal_tasks\\ViewModels\\EditAccountViewModel.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwB8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T08:16:32.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccountManagementViewModel.cs",
+              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\ViewModels\\AccountManagementViewModel.cs",
+              "RelativeDocumentMoniker": "personal_tasks\\ViewModels\\AccountManagementViewModel.cs",
+              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\ViewModels\\AccountManagementViewModel.cs",
+              "RelativeToolTip": "personal_tasks\\ViewModels\\AccountManagementViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T08:03:27.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SimpleHash.cs",
+              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Helpers\\SimpleHash.cs",
+              "RelativeDocumentMoniker": "personal_tasks\\Helpers\\SimpleHash.cs",
+              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Helpers\\SimpleHash.cs",
+              "RelativeToolTip": "personal_tasks\\Helpers\\SimpleHash.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAEwBoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T07:45:46.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "personal_tasks\\Controllers\\DashboardController.cs",
+              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "personal_tasks\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAEwBIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T07:42:45.529Z",
               "EditorCaption": ""
             },
             {
@@ -53,48 +113,22 @@
               "RelativeDocumentMoniker": "personal_tasks\\Controllers\\AdminController.cs",
               "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Controllers\\AdminController.cs",
               "RelativeToolTip": "personal_tasks\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAcwKoAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T07:53:12.755Z",
+              "WhenOpened": "2025-03-10T05:12:09.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DashboardController.cs",
-              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Controllers\\DashboardController.cs",
-              "RelativeDocumentMoniker": "personal_tasks\\Controllers\\DashboardController.cs",
-              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Controllers\\DashboardController.cs",
-              "RelativeToolTip": "personal_tasks\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAADwvwwAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T07:43:48.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "personal_tasks\\Controllers\\AccountController.cs",
-              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "personal_tasks\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAIwCYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T07:32:23.224Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "personal_tasks\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "personal_tasks\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABgAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "AccountManagement.cshtml",
+              "DocumentMoniker": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Views\\Admin\\AccountManagement.cshtml",
+              "RelativeDocumentMoniker": "personal_tasks\\Views\\Admin\\AccountManagement.cshtml",
+              "ToolTip": "G:\\SideProject\\C# ASP.NET\\Personal_Tasks\\personal_tasks\\personal_tasks\\Views\\Admin\\AccountManagement.cshtml",
+              "RelativeToolTip": "personal_tasks\\Views\\Admin\\AccountManagement.cshtml",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAQwH4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-03T09:43:41.392Z",
+              "WhenOpened": "2025-03-05T07:48:03.735Z",
               "EditorCaption": ""
             }
           ]

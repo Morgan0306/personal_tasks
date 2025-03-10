@@ -1,0 +1,51 @@
+﻿@model personal_tasks.ViewModels.EditAccountViewModel
+
+@{
+    ViewData["Title"] = "編輯帳號";
+}
+
+<h2>編輯帳號</h2>
+
+<form asp-action="EditAccount" method="post">
+    <input type="hidden" asp-for="UserID" />
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FullName" class="form-label"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DepartmentId" class="form-label">部門</label>
+        <select asp-for="DepartmentId" class="form-select" asp-items="Model.DepartmentList">
+            <option value="">請選擇部門</option>
+        </select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="RoleId" class="form-label">權限</label>
+        <select asp-for="RoleId" class="form-select" asp-items="Model.RoleList">
+            <option value="">請選擇權限</option>
+        </select>
+        <span asp-validation-for="RoleId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IsActive" class="form-label">啟用狀態</label>
+        <input asp-for="IsActive" type="checkbox" class="form-check-input" />
+        <span asp-validation-for="IsActive" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">儲存</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
