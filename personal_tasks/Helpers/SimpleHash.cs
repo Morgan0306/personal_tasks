@@ -7,7 +7,7 @@ namespace personal_tasks.Helpers
     {
         public static string ComputeHash(string input, string hashAlgorithmName = "SHA256", byte[] saltBytes = null)
         {
-            // 預設若未提供 salt 則略過 (實際上建議產生並儲存 salt)
+            // 預設若未提供 salt 則略過
             byte[] inputBytes = Encoding.UTF8.GetBytes(input);
 
             // 如果提供了 salt 就先合併
