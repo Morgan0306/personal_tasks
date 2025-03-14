@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+//依賴注入
 builder.Services.AddDbContext<Personal_TasksContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("WebDatabase")));
 
@@ -18,7 +18,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         // 設定登入路徑（當未驗證時自動導向此處）
         options.LoginPath = "/Account/Login";
-        // 你可以額外設定 Cookie 的其他屬性，如過期時間、滑動過期等。
+        // 額外設定 Cookie 的其他屬性，如過期時間、滑動過期等。
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     });
 

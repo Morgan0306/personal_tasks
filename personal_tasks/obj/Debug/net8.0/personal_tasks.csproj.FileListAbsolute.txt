@@ -170,3 +170,4 @@ G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\bin\Debug
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\personal_tasks.csproj.AssemblyReference.cache
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\personal.9FDE624D.Up2Date
+G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\personal_tasks.sourcelink.json
