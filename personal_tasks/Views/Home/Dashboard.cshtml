@@ -49,13 +49,6 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-6 text-end">
-                <!-- 新增：切換顯示模式按鈕 -->
-                <div class="btn-group" role="group" aria-label="任務顯示模式">
-                    <button type="button" class="btn btn-outline-primary active" id="btnListView">任務列表</button>
-                    <button type="button" class="btn btn-outline-primary" id="btnCalendarView">任務日曆</button>
-                </div>
-            </div>
         </div>
 
         <!-- 新增：任務列表 -->
@@ -73,60 +66,25 @@
                     <tbody>
                         <tr>
                             <td>人事</td>
-                            <td>員工訓練計畫</td>
-                            <td>制定員工訓練計畫，提升團隊實戰能力...</td>
-                            <td>2023-12-01</td>
+                            <td>功能待更新</td>
+                            <td>功能待更新</td>
+                            <td>2025-2-01</td>
                         </tr>
                         <tr>
                             <td>會計</td>
-                            <td>年度財務報告</td>
-                            <td>編制並審核上一年度的財務報表...</td>
-                            <td>2023-12-15</td>
+                            <td>功能待更新</td>
+                            <td>功能待更新</td>
+                            <td>2025-2-05</td>
                         </tr>
                         <tr>
                             <td>開發</td>
-                            <td>新功能上線</td>
-                            <td>推出新版本前完成 API 優化並進行測試...</td>
-                            <td>2023-12-20</td>
+                            <td>功能待更新</td>
+                            <td>功能待更新</td>
+                            <td>2025-2-20</td>
                         </tr>
-                        <!-- 重複列舉更多任務項目 -->
                     </tbody>
                 </table>
             </div>
         </div>
-        <!-- 新增：任務日曆區 (預留，用於日曆顯示) -->
-        <div class="row d-none" id="taskCalendarSection">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">任務日曆</div>
-                    <div class="card-body">
-                        <!-- 這裡可整合第三方日曆插件並展示日曆 -->
-                        <p>這邊顯示任務日曆內容...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 原有的卡片區塊也可根據需求保留或移至其他位置 -->
     </div>
 </div>
-<script>
-    document.getElementById("btnListView").addEventListener("click", function(){
-        // 切換按鈕樣式
-        this.classList.add("active");
-        document.getElementById("btnCalendarView").classList.remove("active");
-
-        // 顯示任務列表，隱藏日曆
-        document.getElementById("taskListSection").classList.remove("d-none");
-        document.getElementById("taskCalendarSection").classList.add("d-none");
-    });
-
-    document.getElementById("btnCalendarView").addEventListener("click", function(){
-        // 切換按鈕樣式
-        this.classList.add("active");
-        document.getElementById("btnListView").classList.remove("active");
-
-        // 顯示日曆，隱藏任務列表
-        document.getElementById("taskCalendarSection").classList.remove("d-none");
-        document.getElementById("taskListSection").classList.add("d-none");
-    });
-</script>
