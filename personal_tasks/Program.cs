@@ -25,6 +25,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // 加入 MVC 支持
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddControllersWithViews(options =>
+{
+    options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

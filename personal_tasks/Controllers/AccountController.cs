@@ -47,6 +47,12 @@ namespace personal_tasks.Controllers
                 var user = _db.Users.FirstOrDefault(u => u.UserName == model.Username && u.PasswordHash == hashedPassword);
                 if (user != null)
                 {
+                    // 檢查用戶狀態，如果停用則拒絕登入
+                    if (!user.IsActive)
+                    {
+                        ModelState.AddModelError("", "該帳號已停用，無法登入。");
+                        return View(model);
+                    }
                     // 建立使用者的 Claim 列表
                     var claims = new List<Claim>
                     {

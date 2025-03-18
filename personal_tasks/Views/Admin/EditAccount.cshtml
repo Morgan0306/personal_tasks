@@ -9,18 +9,43 @@
 <form asp-action="EditAccount" method="post">
     <input type="hidden" asp-for="UserID" />
 
+    <!-- 帳號欄位：僅供顯示，無法修改 -->
+    <div class="mb-3">
+        <label class="form-label">帳號</label>
+        <input type="text" class="form-control" value="@Model.UserName" readonly />
+    </div>
+
+    <!-- 修改密碼區塊：若不修改密碼，則留空即可 -->
+    <div class="mb-3">
+        <h5>修改密碼</h5>
+        <p class="text-muted">若您要修改密碼，請填入以下欄位，若不修改則留空即可。</p>
+    </div>
+    <div class="mb-3">
+        <label asp-for="NewPassword" class="form-label"></label>
+        <input asp-for="NewPassword" class="form-control" />
+        <span asp-validation-for="NewPassword" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <!-- Email 欄位 -->
     <div class="mb-3">
         <label asp-for="Email" class="form-label"></label>
         <input asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
+    <!-- FullName 欄位 -->
     <div class="mb-3">
         <label asp-for="FullName" class="form-label"></label>
         <input asp-for="FullName" class="form-control" />
         <span asp-validation-for="FullName" class="text-danger"></span>
     </div>
 
+    <!-- 部門選單 -->
     <div class="mb-3">
         <label asp-for="DepartmentId" class="form-label">部門</label>
         <select asp-for="DepartmentId" class="form-select" asp-items="Model.DepartmentList">
@@ -29,6 +54,7 @@
         <span asp-validation-for="DepartmentId" class="text-danger"></span>
     </div>
 
+    <!-- 權限選單 -->
     <div class="mb-3">
         <label asp-for="RoleId" class="form-label">權限</label>
         <select asp-for="RoleId" class="form-select" asp-items="Model.RoleList">
@@ -37,14 +63,23 @@
         <span asp-validation-for="RoleId" class="text-danger"></span>
     </div>
 
+    <!-- 啟用狀態 -->
     <div class="mb-3">
-        <label asp-for="IsActive" class="form-label">啟用狀態</label>
-        <input asp-for="IsActive" type="checkbox" class="form-check-input" />
+        <label class="form-label">啟用狀態</label>
+        <div>
+            <input type="radio" id="enable" name="IsActive" value="true" @(Model.IsActive ? "checked" : "") />
+            <label for="enable">啟用</label>
+
+            <input type="radio" id="disable" name="IsActive" value="false" @(!Model.IsActive ? "checked" : "") />
+            <label for="disable">停用</label>
+        </div>
         <span asp-validation-for="IsActive" class="text-danger"></span>
     </div>
 
+
     <button type="submit" class="btn btn-primary">儲存</button>
 </form>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

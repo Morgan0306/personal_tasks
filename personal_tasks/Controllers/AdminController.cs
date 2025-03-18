@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using personal_tasks.Helpers;
 using personal_tasks.Models;
 using personal_tasks.ViewModels;
 using System.Security.Claims;
@@ -134,12 +135,12 @@ namespace personal_tasks.Controllers
             var model = new EditAccountViewModel
             {
                 UserID = user.UserID,
+                UserName = user.UserName,
                 Email = user.Email,
                 FullName = user.Name,
                 DepartmentId = user.DepartmentId,
                 RoleId = user.RoleId.ToString(),
                 IsActive = user.IsActive,
-
                 // 初始化下拉選單資料來源
                 DepartmentList = new SelectList(_context.Departments.ToList(), "DepartmentId", "DepartmentName", user.DepartmentId),
                 RoleList = new SelectList(_context.Roles.ToList(), "RoleId", "RoleName", user.RoleId)
@@ -177,7 +178,20 @@ namespace personal_tasks.Controllers
             user.UpdatedAt = DateTime.Now;
 
             // 若密碼有修改（可以添加密碼修改機制），此處略過
-
+            if (!string.IsNullOrWhiteSpace(model.NewPassword))
+            {
+                // 依 DataAnnotations [Compare] 已自動比對，這裡可再做一次保險檢查
+                if (model.NewPassword != model.ConfirmPassword)
+                {
+                    ModelState.AddModelError("NewPassword", "密碼和確認密碼不匹配。");
+                    // 必須再初始化下拉選單資料
+                    model.DepartmentList = new SelectList(_context.Departments.ToList(), "DepartmentId", "DepartmentName", model.DepartmentId);
+                    model.RoleList = new SelectList(_context.Roles.ToList(), "RoleId", "RoleName", model.RoleId);
+                    return View(model);
+                }
+                // 使用 SimpleHash 進行加密後存入資料庫
+                user.PasswordHash = SimpleHash.ComputeHash(model.NewPassword);
+            }
             await _context.SaveChangesAsync();
 
             return RedirectToAction("AccountManagement", "Admin");

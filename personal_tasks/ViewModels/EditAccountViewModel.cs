@@ -20,14 +20,37 @@ namespace personal_tasks.ViewModels
         public int? DepartmentId { get; set; }
 
         [Display(Name = "權限")]
-        public string RoleId { get; set; }
+        public string? RoleId { get; set; }
 
         [Display(Name = "狀態")]
         public bool IsActive { get; set; }
 
-        // 下拉式選單資料來源
+        // 帳號僅用於顯示，不允許修改
+        [Display(Name = "帳號")]
+        public string? UserName { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "新密碼")]
+        public string? NewPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "確認密碼")]
+        [Compare("NewPassword", ErrorMessage = "密碼和確認密碼不匹配。")]
+        public string? ConfirmPassword { get; set; }
+
+        // 下拉選單資料來源
         public IEnumerable<SelectListItem> DepartmentList { get; set; } = Enumerable.Empty<SelectListItem>();
         public IEnumerable<SelectListItem> RoleList { get; set; } = Enumerable.Empty<SelectListItem>();
-
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            // 只有在用戶有打算更新密碼時才驗證兩者是否相符
+            if (!string.IsNullOrEmpty(NewPassword))
+            {
+                if (NewPassword != ConfirmPassword)
+                {
+                    yield return new ValidationResult("密碼和確認密碼不匹配。", new[] { "ConfirmPassword" });
+                }
+            }
+        }
     }
 }

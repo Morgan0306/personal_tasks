@@ -94,7 +94,14 @@
                             {
                                 <!-- 管理者可以編輯刪除所有帳號 -->
                                 <a href="@Url.Action("EditAccount", "Admin", new { id = user.UserID })" class="btn btn-sm btn-primary">編輯</a>
-                                <a href="@Url.Action("DeleteAccount", "Admin", new { id = user.UserID })" class="btn btn-sm btn-danger" onclick="return confirm('確定刪除此帳號嗎？');">刪除</a>
+                                <button type="button" class="btn btn-sm btn-danger delete-btn"
+                                        data-userid="@user.UserID"
+                                        data-useraccount="@user.UserName"
+                                        data-fullname="@user.Name"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteConfirmationModal">
+                                    刪除
+                                </button>
                             }
                             else if (currentUserRole == "DepartmentManager")
                             {
@@ -105,16 +112,18 @@
                                 {
                                     isEmployee = (user.Role.RoleName.ToLower() == "employee");
                                 }
-                                else
-                                {
-                                    // 若只存數值，可以替換如下：
-                                    // isEmployee = (user.RoleId == 3);
-                                }
-
+                                
                                 if (isSameDept && isEmployee)
                                 {
                                     <a href="@Url.Action("EditAccount", "Admin", new { id = user.UserID })" class="btn btn-sm btn-primary">編輯</a>
-                                    <a href="@Url.Action("DeleteAccount", "Admin", new { id = user.UserID })" class="btn btn-sm btn-danger" onclick="return confirm('確定刪除此帳號嗎？');">刪除</a>
+                                    <button type="button" class="btn btn-sm btn-danger delete-btn"
+                                            data-userid="@user.UserID"
+                                            data-useraccount="@user.UserName"
+                                            data-fullname="@user.Name"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#deleteConfirmationModal">
+                                        刪除
+                                    </button>
                                 }
                                 else
                                 {
@@ -139,51 +148,107 @@
         </tbody>
     </table>
 
-    <!-- 分頁控制 -->
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            @if (Model.CurrentPage > 1)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("AccountManagement", new { page = Model.CurrentPage - 1 })">Previous</a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
-            }
-
-            @for (int i = 1; i <= Model.TotalPages; i++)
-            {
-                if (i == Model.CurrentPage)
-                {
-                    <li class="page-item active">
-                        <span class="page-link">@i</span>
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Page navigation">
+            <div class="d-flex justify-content-between align-items-center">
+                @* 上一頁按鈕：左側固定位置，增加顯眼樣式 *@
+                <ul class="pagination mb-0">
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link btn btn-primary text-blue fw-bold px-3"
+                           href="@(Model.CurrentPage > 1 ? Url.Action("AccountManagement", new { page = Model.CurrentPage - 1, departmentId = Model.DepartmentFilter, roleId = Model.RoleFilter }) : "#")">
+                            &lt; 上一頁
+                        </a>
                     </li>
-                }
-                else
-                {
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("AccountManagement", new { page = i })">@i</a>
-                    </li>
-                }
-            }
+                </ul>
 
-            @if (Model.CurrentPage < Model.TotalPages)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("AccountManagement", new { page = Model.CurrentPage + 1 })">Next</a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item disabled">
-                    <span class="page-link">Next</span>
-                </li>
-            }
-        </ul>
-    </nav>
+                @* 分頁數字連結：位於中間 *@
+                <ul class="pagination mb-0">
+                    <li class="page-item @(Model.CurrentPage == 1 ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("AccountManagement", new { page = 1, departmentId = Model.DepartmentFilter, roleId = Model.RoleFilter })">1</a>
+                    </li>
+
+                    @if (Model.CurrentPage > 3)
+                    {
+                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                    }
+
+                    @for (int i = Math.Max(2, Model.CurrentPage - 2); i <= Math.Min(Model.TotalPages - 1, Model.CurrentPage + 2); i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("AccountManagement", new { page = i, departmentId = Model.DepartmentFilter, roleId = Model.RoleFilter })">@i</a>
+                        </li>
+                    }
+
+                    @if (Model.CurrentPage < Model.TotalPages - 2)
+                    {
+                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                    }
+
+                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("AccountManagement", new { page = Model.TotalPages, departmentId = Model.DepartmentFilter, roleId = Model.RoleFilter })">@Model.TotalPages</a>
+                    </li>
+                </ul>
+
+                @* 下一頁按鈕：右側固定位置，增加顯眼樣式 *@
+                <ul class="pagination mb-0">
+                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link btn btn-primary text-blue fw-bold px-3"
+                           href="@(Model.CurrentPage < Model.TotalPages ? Url.Action("AccountManagement", new { page = Model.CurrentPage + 1, departmentId = Model.DepartmentFilter, roleId = Model.RoleFilter }) : "#")">
+                            下一頁 &gt;
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    }
+
 </div>
+<!-- 刪除確認 Modal -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form id="deleteAccountForm" method="post" action="@Url.Action("DeleteAccountConfirmed", "Admin")">
+            @Html.AntiForgeryToken()
+            <!-- 隱藏欄位 用來儲存待刪除的使用者ID -->
+            <input type="hidden" id="deleteUserID" name="userID" value="" />
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">確認刪除</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+                </div>
+                <div class="modal-body">
+                    <p>您確定要刪除以下帳號嗎？</p>
+                    <ul>
+                        <li>帳號：<span id="modalUserAccount"></span></li>
+                        <li>姓名：<span id="modalUserFullName"></span></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <!-- Submit 按鈕會直接送出表單 -->
+                    <button type="submit" class="btn btn-danger">確定刪除</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('deleteConfirmationModal').addEventListener('show.bs.modal', function (event) {
+        // 取得觸發 Modal 的按鈕
+        var button = event.relatedTarget;
+        // 讀取按鈕上設定的使用者 ID、帳號和姓名
+        var userId = button.getAttribute('data-userid');
+        var userAccount = button.getAttribute('data-useraccount');
+        var fullName = button.getAttribute('data-fullname');
+
+        // 將使用者ID填入 Modal 表單中的隱藏欄位
+        document.getElementById('deleteUserID').value = userId;
+        // 顯示於 Modal 畫面中
+        document.getElementById('modalUserAccount').textContent = userAccount;
+        document.getElementById('modalUserFullName').textContent = fullName;
+    });
+</script>
+
 
