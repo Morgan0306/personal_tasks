@@ -28,16 +28,16 @@
 <img src="https://media.discordapp.net/attachments/984816932010201129/1350022850052096060/image.png?ex=67d53a41&is=67d3e8c1&hm=890cc379b00df95f9128384f6a68c08a0f1c6eb0ba34186e90d11347391cafb5&=&format=webp&quality=lossless&width=830&height=622" alt="任務列表示意圖" width="600"/>
 
 ## 帳號管理功能(權限控制)
-<img src="https://media.discordapp.net/attachments/984816932010201129/1350022850458947648/image.png?ex=67d53a41&is=67d3e8c1&hm=a949a4338c576bc97de7bb0b817e6eb13eefb644d6681c6b41a644a0393bc331&=&format=webp&quality=lossless&width=830&height=622" alt="帳號管理示意圖" width="600"/>
+<img src="https://cdn.discordapp.com/attachments/984816932010201129/1351441611904651317/image.png?ex=67da6394&is=67d91214&hm=0705e4be7353f591151d23b33088c73a0a87dba2857b38833e99f03797e74d98&" alt="帳號管理示意圖" width="600"/>
 
 ## 用戶搜尋
-<img src="https://media.discordapp.net/attachments/984816932010201129/1350022850807070731/image.png?ex=67d53a41&is=67d3e8c1&hm=97430e5923e23cffeb68b5ca2496a6b72719d83712ea0b8ca1931b8a9e7701cf&=&format=webp&quality=lossless&width=830&height=622" alt="用戶搜尋示意圖" width="600"/>
+<img src="https://media.discordapp.net/attachments/984816932010201129/1351441072903159848/image.png?ex=67da6314&is=67d91194&hm=77389b71a7ab5ece19f53d4b99f7df57250efe79d09112c06dcdc2184f308e08&=&format=webp&quality=lossless&width=1095&height=752" alt="用戶搜尋示意圖" width="600"/>
 
 ## 帳號註冊畫面
-<img src="https://media.discordapp.net/attachments/984816932010201129/1350022851133964319/image.png?ex=67d53a41&is=67d3e8c1&hm=9ed8f0c77ec3ab5d05b8781f19e583d18093a497ca928ca0b78cc0f2354d9dd8&=&format=webp&quality=lossless&width=830&height=622" alt="帳號註冊示意圖" width="600"/>
+<img src="https://media.discordapp.net/attachments/984816932010201129/1351441073184051222/image.png?ex=67da6314&is=67d91194&hm=cb9ea364782787fce7b963b358516005699906b3431c4d05d148db9ef46bd5af&=&format=webp&quality=lossless&width=1054&height=752" alt="帳號註冊示意圖" width="600"/>
 
 ## 帳號編輯
-<img src="https://media.discordapp.net/attachments/984816932010201129/1350022851511582760/image.png?ex=67d53a42&is=67d3e8c2&hm=5b6f3b93fc08d7a8053e90bf59b9c1b6398c3187b61291e752370e0e4245aea3&=&format=webp&quality=lossless&width=830&height=622" alt="帳號編輯示意圖" width="600"/>
+<img src="https://media.discordapp.net/attachments/984816932010201129/1351441073498751027/image.png?ex=67da6314&is=67d91194&hm=f18bfe7d5dc1206b3d7611167a079ba7f0ea75693438a4d2d78b3dfc374344f3&=&format=webp&quality=lossless&width=1054&height=752" alt="帳號編輯示意圖" width="600"/>
 
 ## 帳號刪除
-<img src="https://media.discordapp.net/attachments/984816932010201129/1350022851956047893/image.png?ex=67d53a42&is=67d3e8c2&hm=f7a6f68bd7c3b243106978d1b23d2adbf8838e3bd5a74fc4340b3eb0fb398ea3&=&format=webp&quality=lossless&width=830&height=622" alt="帳號刪除示意圖" width="600"/>
+<img src="https://media.discordapp.net/attachments/984816932010201129/1351441073859330078/image.png?ex=67da6314&is=67d91194&hm=f44c45c10d33d5f93cd64f6db3dae4ae85f9cf91eb6410e5778f3a65805760b1&=&format=webp&quality=lossless&width=1054&height=752" alt="帳號刪除示意圖" width="600"/>
