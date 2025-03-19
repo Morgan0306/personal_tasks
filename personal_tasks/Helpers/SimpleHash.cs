@@ -31,7 +31,6 @@ namespace personal_tasks.Helpers
 
                 byte[] hashBytes = hashAlgorithm.ComputeHash(bytesToHash);
 
-                // Convert hash bytes to hexadecimal string
                 StringBuilder sb = new StringBuilder();
                 foreach (var b in hashBytes)
                 {

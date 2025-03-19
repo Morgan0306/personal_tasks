@@ -18,7 +18,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         // 設定登入路徑（當未驗證時自動導向此處）
         options.LoginPath = "/Account/Login";
-        // 額外設定 Cookie 的其他屬性，如過期時間、滑動過期等。
+        // 額外設定 Cookie 的其他屬性。
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     });
 

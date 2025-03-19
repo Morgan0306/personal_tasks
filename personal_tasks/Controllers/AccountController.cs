@@ -41,7 +41,7 @@ namespace personal_tasks.Controllers
         {
             if (ModelState.IsValid)
             {
-                // 這裡使用 SimpleHash.ComputeHash 作為雜湊方法
+                // 使用 SimpleHash.ComputeHash 作為雜湊方法
                 string hashedPassword = SimpleHash.ComputeHash(model.Password, "SHA256", null);
 
                 var user = _db.Users.FirstOrDefault(u => u.UserName == model.Username && u.PasswordHash == hashedPassword);
@@ -56,8 +56,9 @@ namespace personal_tasks.Controllers
                     // 建立使用者的 Claim 列表
                     var claims = new List<Claim>
                     {
+                        // 根據需要加入其他 Claim
                         new Claim(ClaimTypes.Name, user.Name ?? user.UserName),
-                        // 根據需要可以加入其他 Claim
+                        
                         new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
 
                         new Claim("RoleId", user.RoleId.ToString())
@@ -66,11 +67,11 @@ namespace personal_tasks.Controllers
                     var claimsIdentity = new ClaimsIdentity(
                         claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    // 設定 Cookie 的選項，這裡根據 RememberMe 決定是否持久化 Cookie
+                    // 設定 Cookie 的選項，決定是否持久化 Cookie
                     var authProperties = new AuthenticationProperties
                     {
                         IsPersistent = false,
-                        // 可設定 Cookie 的過期時間
+                        // 設定 Cookie 的過期時間
                         ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
                     };
 
@@ -113,10 +114,10 @@ namespace personal_tasks.Controllers
                 var currentUser = _context.Users.FirstOrDefault(u => u.UserID == currentUserId);
                 if (currentUser != null)
                 {
-                    // 方法一：檢查使用者本身的 RoleId 是否為 6 (代表主管)
+                    // 檢查使用者本身的 RoleId 是否為 6 (代表主管)
                     bool isManagerByRole = (currentUser.RoleId == 6);
 
-                    // 方法二：依據使用者的 DepartmentId，檢查對應部門的 ManagerId 是否相等
+                    // 依據使用者的 DepartmentId，檢查對應部門的 ManagerId 是否相等
                     bool isManagerByDept = false;
                     if (currentUser.DepartmentId.HasValue)
                     {
@@ -142,7 +143,7 @@ namespace personal_tasks.Controllers
                         }
                         else
                         {
-                            // 若 DepartmentId 尚未設定，嘗試從 Claims 取得（例如 Claim 名稱 "DepartmentId"）
+                            // 若 DepartmentId 尚未設定，嘗試從 Claims 取得
                             var deptIdClaim = User.FindFirst("DepartmentId");
                             if (deptIdClaim != null && int.TryParse(deptIdClaim.Value, out int deptId))
                             {
@@ -190,8 +191,8 @@ namespace personal_tasks.Controllers
             {
                 UserName = model.Username,
                 Email = model.Email,
-                PasswordHash = hashedPassword, // 實際上請用正確的密碼哈希處理
-                RoleId = int.Parse(model.RoleId), // 若 RoleId 儲存為 int (要注意資料型別)
+                PasswordHash = hashedPassword,
+                RoleId = int.Parse(model.RoleId), //  RoleId 儲存為 int
                 DepartmentId = model.DepartmentId,
                 IsActive = true,
                 CreatedAt = DateTime.Now,
@@ -210,8 +211,6 @@ namespace personal_tasks.Controllers
                     await _context.SaveChangesAsync();
                 }
             }
-
-            // 註冊成功後，可以選擇自動登入，或導向登入頁面
             return RedirectToAction("AccountManagement", "Admin");                        
         }
 

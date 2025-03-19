@@ -54,11 +54,11 @@ namespace personal_tasks.Controllers
                 RoleFilter = roleId               // 可選篩選的角色ID
             };
 
-            // 假設下拉選單資料也透過 ViewBag 傳遞
+            // 下拉選單資料透過 ViewBag 傳遞
             ViewBag.DepartmentList = new SelectList(_context.Departments.ToList(), "DepartmentId", "DepartmentName", departmentId);
             ViewBag.RoleList = new SelectList(_context.Roles.ToList(), "RoleId", "RoleName", roleId);
 
-            // 設定目前登入使用者相關權限資訊 (不在此範例展開，可參考先前的處理)
+            // 設定目前登入使用者相關權限資訊
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             int currentUserId = 0;
             if (userIdClaim != null)
@@ -131,7 +131,7 @@ namespace personal_tasks.Controllers
                 return NotFound();
             }
 
-            // 建立一個 ViewModel 或直接使用 Users 模型（這裡示範使用一個編輯 ViewModel）
+            // 建立一個 ViewModel
             var model = new EditAccountViewModel
             {
                 UserID = user.UserID,
@@ -177,14 +177,14 @@ namespace personal_tasks.Controllers
             user.IsActive = model.IsActive;
             user.UpdatedAt = DateTime.Now;
 
-            // 若密碼有修改（可以添加密碼修改機制），此處略過
+            // 若密碼有修改
             if (!string.IsNullOrWhiteSpace(model.NewPassword))
             {
-                // 依 DataAnnotations [Compare] 已自動比對，這裡可再做一次保險檢查
+                // 依 DataAnnotations [Compare] 已自動比對，這裡再做一次保險檢查
                 if (model.NewPassword != model.ConfirmPassword)
                 {
                     ModelState.AddModelError("NewPassword", "密碼和確認密碼不匹配。");
-                    // 必須再初始化下拉選單資料
+                    // 再初始化下拉選單資料
                     model.DepartmentList = new SelectList(_context.Departments.ToList(), "DepartmentId", "DepartmentName", model.DepartmentId);
                     model.RoleList = new SelectList(_context.Roles.ToList(), "RoleId", "RoleName", model.RoleId);
                     return View(model);

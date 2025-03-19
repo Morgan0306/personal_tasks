@@ -105,7 +105,7 @@
                             }
                             else if (currentUserRole == "DepartmentManager")
                             {
-                                // 部門主管只允許編輯及刪除同部門且角色為 Employee (假設 Employee 的 RoleId 為 3 或 RoleName 為 "Employee")
+                                // 部門主管只允許編輯及刪除同部門且角色為 Employee
                                 bool isSameDept = (user.DepartmentId == currentUserDeptId);
                                 bool isEmployee = false;
                                 if (user.Role != null)
@@ -152,7 +152,7 @@
     {
         <nav aria-label="Page navigation">
             <div class="d-flex justify-content-between align-items-center">
-                @* 上一頁按鈕：左側固定位置，增加顯眼樣式 *@
+
                 <ul class="pagination mb-0">
                     <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
                         <a class="page-link btn btn-primary text-blue fw-bold px-3"
@@ -162,7 +162,6 @@
                     </li>
                 </ul>
 
-                @* 分頁數字連結：位於中間 *@
                 <ul class="pagination mb-0">
                     <li class="page-item @(Model.CurrentPage == 1 ? "active" : "")">
                         <a class="page-link" href="@Url.Action("AccountManagement", new { page = 1, departmentId = Model.DepartmentFilter, roleId = Model.RoleFilter })">1</a>
@@ -190,7 +189,6 @@
                     </li>
                 </ul>
 
-                @* 下一頁按鈕：右側固定位置，增加顯眼樣式 *@
                 <ul class="pagination mb-0">
                     <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
                         <a class="page-link btn btn-primary text-blue fw-bold px-3"
@@ -209,7 +207,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <form id="deleteAccountForm" method="post" action="@Url.Action("DeleteAccountConfirmed", "Admin")">
             @Html.AntiForgeryToken()
-            <!-- 隱藏欄位 用來儲存待刪除的使用者ID -->
+            <!--用來儲存待刪除的使用者ID -->
             <input type="hidden" id="deleteUserID" name="userID" value="" />
 
             <div class="modal-content">
@@ -226,7 +224,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                    <!-- Submit 按鈕會直接送出表單 -->
                     <button type="submit" class="btn btn-danger">確定刪除</button>
                 </div>
             </div>

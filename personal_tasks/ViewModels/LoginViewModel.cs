@@ -8,7 +8,7 @@ namespace personal_tasks.ViewModels
         [Display(Name = "使用者名稱")]
         public string Username { get; set; }
 
-        // 由使用者輸入的密碼，使用 DataType.Password 可使表單控件隱藏字元
+        // 由使用者輸入的密碼，使用 DataType.Password 使表單控件隱藏字元
         [Required(ErrorMessage = "請輸入密碼")]
         [DataType(DataType.Password)]
         [Display(Name = "密碼")]

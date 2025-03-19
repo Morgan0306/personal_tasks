@@ -30,7 +30,7 @@ namespace personal_tasks.ViewModels
         public string FullName { get; set; }
 
         // 部門選單：若使用者為主要管理者，則需要從下拉式選單中選擇部門；
-        // 若是部門主管，則自動指定該部門，部門名稱亦會顯示供參考
+        // 若是部門主管，則自動指定該部門，部門名稱會顯示供參考
         [Display(Name = "部門")]
         public int? DepartmentId { get; set; }
 
