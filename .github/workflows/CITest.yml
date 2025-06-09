@@ -33,11 +33,15 @@ jobs:
       shell: powershell
       run: |
         $sitePath = "G:\code\Csharp\CI_test"
+        Stop-WebAppPool -Name "CI_test"
+        Get-ChildItem -Path $sitePath -Recurse -Force | ForEach-Object {
+          $_.IsReadOnly = $false
+        }
         if (Test-Path $sitePath) {
           Remove-Item -Recurse -Force "$sitePath\*"
         } else {
           New-Item -ItemType Directory -Path $sitePath
         }
         Copy-Item -Path "./publish/*" -Destination $sitePath -Recurse
-        Restart-WebAppPool -Name "CI_test"
-        Write-Host "✅ Deployment to IIS completed."
+        Start-WebAppPool -Name "CI_test"
+        Write-Host "✅ Deployment to IIS site 'CI_test' completed."
