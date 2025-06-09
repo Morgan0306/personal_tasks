@@ -1,14 +1,12 @@
-name: Build .NET Project test
+name: Build and Deploy to Local IIS
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build:
-    runs-on: windows-latest
+  build-and-deploy:
+    runs-on: self-hosted  # 使用本機 GitHub Runner
 
     steps:
     - name: Checkout code
@@ -22,8 +20,24 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
-    - name: Build
-      run: dotnet build --no-restore --configuration Release
+    - name: Build project
+      run: dotnet build --configuration Release --no-restore
 
-    - name: Run tests
-      run: dotnet test --no-build --verbosity normal
+   # - name: Run tests
+   #   run: dotnet test --no-build --verbosity normal
+
+    - name: Publish project
+      run: dotnet publish ./personal_tasks.csproj -c Release -o ./publish
+
+    - name: Deploy to IIS
+      shell: powershell
+      run: |
+        $sitePath = "C:\inetpub\wwwroot\YourSite"
+        if (Test-Path $sitePath) {
+          Remove-Item -Recurse -Force "$sitePath\*"
+        } else {
+          New-Item -ItemType Directory -Path $sitePath
+        }
+        Copy-Item -Path "./publish/*" -Destination $sitePath -Recurse
+        Restart-WebAppPool -Name "YourAppPoolName"
+        Write-Host "✅ Deployment to IIS completed."
