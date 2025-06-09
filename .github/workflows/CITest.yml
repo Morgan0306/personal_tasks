@@ -41,7 +41,21 @@ jobs:
         } catch {
           Write-Warning "⚠️ App pool '$appPool' may already be stopped or not found: $_"
         }
-
+        
+        $maxRetry = 10
+        $waitSeconds = 2
+        for ($i = 0; $i -lt $maxRetry; $i++) {
+          $processes = Get-Process w3wp -ErrorAction SilentlyContinue | Where-Object {
+            $_.Path -like "*CI_test*"
+          }
+          if ($processes) {
+            Write-Host "等待 IIS AppPool 關閉中...($($i+1)/$maxRetry)"
+            Start-Sleep -Seconds $waitSeconds
+          } else {
+            break
+          }
+        }
+        
         Get-ChildItem -Path $sitePath -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
           try {
             $_.IsReadOnly = $false
