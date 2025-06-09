@@ -27,17 +27,17 @@ jobs:
    #   run: dotnet test --no-build --verbosity normal
 
     - name: Publish project
-      run: dotnet publish ./personal_tasks.csproj -c Release -o ./publish
+      run: dotnet publish ./personal_tasks/personal_tasks.csproj -c Release -o ./publish
 
     - name: Deploy to IIS
       shell: powershell
       run: |
-        $sitePath = "C:\inetpub\wwwroot\YourSite"
+        $sitePath = "G:\code\Csharp\CI_test"
         if (Test-Path $sitePath) {
           Remove-Item -Recurse -Force "$sitePath\*"
         } else {
           New-Item -ItemType Directory -Path $sitePath
         }
         Copy-Item -Path "./publish/*" -Destination $sitePath -Recurse
-        Restart-WebAppPool -Name "YourAppPoolName"
+        Restart-WebAppPool -Name "CI_test"
         Write-Host "✅ Deployment to IIS completed."
