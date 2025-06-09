@@ -20,13 +20,6 @@ G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets.build.json
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets.development.json
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets\msbuild.personal_tasks.Microsoft.AspNetCore.StaticWebAssets.props
-G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets\msbuild.personal_tasks.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets\msbuild.build.personal_tasks.props
-G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.personal_tasks.props
-G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.personal_tasks.props
-G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets.pack.json
-G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\personal_tasks.dll
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\refint\personal_tasks.dll
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\personal_tasks.pdb
@@ -171,3 +164,4 @@ G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\bin\Debug
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\personal_tasks.csproj.AssemblyReference.cache
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\personal.9FDE624D.Up2Date
 G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\personal_tasks.sourcelink.json
+G:\SideProject\C# ASP.NET\Personal_Tasks\personal_tasks\personal_tasks\obj\Debug\net8.0\staticwebassets.build.json.cache
