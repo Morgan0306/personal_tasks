@@ -32,12 +32,29 @@ jobs:
     - name: Deploy to IIS
       shell: powershell
       run: |
-        $sitePath = "G:\code\Csharp\CI_test"
-        if (Test-Path $sitePath) {
-          Remove-Item -Recurse -Force "$sitePath\*"
-        } else {
-          New-Item -ItemType Directory -Path $sitePath
+       $sitePath = "G:\code\Csharp\CI_test"
+        $appPool = "CI_test"
+        
+        try {
+          Stop-WebAppPool -Name $appPool -ErrorAction Stop
+          Write-Host "✅ App pool '$appPool' stopped."
+        } catch {
+          Write-Warning "⚠️ App pool '$appPool' may already be stopped or not found: $_"
         }
-        Copy-Item -Path "./publish/*" -Destination $sitePath -Recurse
-        Restart-WebAppPool -Name "CI_test"
-        Write-Host "✅ Deployment to IIS completed."
+
+        Get-ChildItem -Path $sitePath -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
+          try {
+            $_.IsReadOnly = $false
+          } catch {}
+        }
+        Get-ChildItem -Path $sitePath -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
+          try {
+            Remove-Item -Path $_.FullName -Force -Recurse -ErrorAction Stop
+          } catch {
+            Write-Warning "⚠️ 無法刪除檔案：$($_.FullName) - $_"
+          }
+        }
+        Copy-Item -Path "./publish/*" -Destination $sitePath -Recurse -Force
+        Start-WebAppPool -Name $appPool
+        Write-Host "✅ Deployment to IIS site '$appPool' completed."
+
