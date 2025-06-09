@@ -34,8 +34,14 @@ jobs:
       run: |
        $sitePath = "G:\code\Csharp\CI_test"
         $appPool = "CI_test"
-        Stop-WebAppPool -Name $appPool
-        Start-Sleep -Seconds 5 
+        
+        try {
+          Stop-WebAppPool -Name $appPool -ErrorAction Stop
+          Write-Host "✅ App pool '$appPool' stopped."
+        } catch {
+          Write-Warning "⚠️ App pool '$appPool' may already be stopped or not found: $_"
+        }
+
         Get-ChildItem -Path $sitePath -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
           try {
             $_.IsReadOnly = $false
