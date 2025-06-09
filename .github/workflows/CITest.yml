@@ -32,30 +32,41 @@ jobs:
     - name: Deploy to IIS
       shell: powershell
       run: |
-       $sitePath = "G:\code\Csharp\CI_test"
+        $sitePath = "G:\code\Csharp\CI_test"
         $appPool = "CI_test"
         
         try {
-          Stop-WebAppPool -Name $appPool -ErrorAction Stop
-          Write-Host "✅ App pool '$appPool' stopped."
+          Stop-WebAppPool -Name $appPool -ErrorAction Stop
+          Write-Host "✅ App pool '$appPool' stopped."
         } catch {
-          Write-Warning "⚠️ App pool '$appPool' may already be stopped or not found: $_"
+          Write-Warning "⚠️ App pool '$appPool' may already be stopped or not found: $_"
         }
-        
-        $maxRetry = 10
+
+        $maxRetry = 15
         $waitSeconds = 2
+        $released = $false
         for ($i = 0; $i -lt $maxRetry; $i++) {
-          $processes = Get-Process w3wp -ErrorAction SilentlyContinue | Where-Object {
-            $_.Path -like "*CI_test*"
+          $locked = $false
+          Get-ChildItem -Path $sitePath -Filter *.dll | ForEach-Object {
+            try {
+              $stream = [System.IO.File]::Open($_.FullName, 'Open', 'ReadWrite', 'None')
+              $stream.Close()
+            } catch {
+              $locked = $true
+            }
           }
-          if ($processes) {
-            Write-Host "等待 IIS AppPool 關閉中...($($i+1)/$maxRetry)"
-            Start-Sleep -Seconds $waitSeconds
-          } else {
+          if (-not $locked) {
+            $released = $true
             break
           }
+          Write-Host "等待 DLL 釋放中...($($i+1)/$maxRetry)"
+          Start-Sleep -Seconds $waitSeconds
         }
-        
+
+        if (-not $released) {
+          throw "有檔案持續被鎖定，部署中止！"
+        }
+
         Get-ChildItem -Path $sitePath -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
           try {
             $_.IsReadOnly = $false
