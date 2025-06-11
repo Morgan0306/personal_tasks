@@ -23,8 +23,8 @@ jobs:
     - name: Build project
       run: dotnet build --configuration Release --no-restore
 
-   # - name: Run tests
-   #   run: dotnet test --no-build --verbosity normal
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal ./TestProject1/TestProject1.csproj
 
     - name: Publish project
       run: dotnet publish ./personal_tasks/personal_tasks.csproj -c Release -o ./publish
@@ -32,54 +32,37 @@ jobs:
     - name: Deploy to IIS
       shell: powershell
       run: |
-        $sitePath = "G:\code\Csharp\CI_test"
+       $baseDeployPath = "G:\code\Csharp\CI_test"
         $appPool = "CI_test"
-        
+        $timestamp = Get-Date -Format "yyyyMMddHHmmss"
+        $newDeployFolder = Join-Path $baseDeployPath "release-$timestamp"
+
+        # Copy published files to new versioned folder
+        Copy-Item -Path "./publish/*" -Destination $newDeployFolder -Recurse -Force
+
+        # Update IIS site physical path to the new folder
+        Import-Module WebAdministration
+        Set-ItemProperty "IIS:\Sites\$appPool" -Name physicalPath -Value $newDeployFolder
+
+        # Restart App Pool
         try {
-          Stop-WebAppPool -Name $appPool -ErrorAction Stop
-          Write-Host "✅ App pool '$appPool' stopped."
+          Restart-WebAppPool -Name $appPool
+          Write-Host "✅ App pool '$appPool' restarted."
         } catch {
-          Write-Warning "⚠️ App pool '$appPool' may already be stopped or not found: $_"
+          Write-Warning "⚠️ App pool '$appPool' restart failed: $_"
         }
 
-        $maxRetry = 15
-        $waitSeconds = 2
-        $released = $false
-        for ($i = 0; $i -lt $maxRetry; $i++) {
-          $locked = $false
-          Get-ChildItem -Path $sitePath -Filter *.dll | ForEach-Object {
-            try {
-              $stream = [System.IO.File]::Open($_.FullName, 'Open', 'ReadWrite', 'None')
-              $stream.Close()
-            } catch {
-              $locked = $true
-            }
-          }
-          if (-not $locked) {
-            $released = $true
-            break
-          }
-          Write-Host "等待 DLL 釋放中...($($i+1)/$maxRetry)"
-          Start-Sleep -Seconds $waitSeconds
-        }
-
-        if (-not $released) {
-          throw "有檔案持續被鎖定，部署中止！"
-        }
-
-        Get-ChildItem -Path $sitePath -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
+        # Clean up old deployments, keep only the latest 3
+        $folders = Get-ChildItem -Path $baseDeployPath -Directory | Where-Object { $_.Name -like "release-*" } | Sort-Object Name -Descending
+        $foldersToRemove = $folders | Select-Object -Skip 3
+        foreach ($folder in $foldersToRemove) {
           try {
-            $_.IsReadOnly = $false
-          } catch {}
-        }
-        Get-ChildItem -Path $sitePath -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-          try {
-            Remove-Item -Path $_.FullName -Force -Recurse -ErrorAction Stop
+            Remove-Item -Path $folder.FullName -Recurse -Force
+            Write-Host "🗑️ Removed old deployment folder: $($folder.FullName)"
           } catch {
-            Write-Warning "⚠️ 無法刪除檔案：$($_.FullName) - $_"
+            Write-Warning "⚠️ Failed to remove folder: $($folder.FullName) - $_"
           }
         }
-        Copy-Item -Path "./publish/*" -Destination $sitePath -Recurse -Force
-        Start-WebAppPool -Name $appPool
-        Write-Host "✅ Deployment to IIS site '$appPool' completed."
+
+        Write-Host "✅ Deployment to IIS site '$appPool' with versioned folder completed."
 
