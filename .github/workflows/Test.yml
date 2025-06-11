@@ -17,6 +17,9 @@ jobs:
         with: 
           name: published-app
           path: ./publish
+          
+      - name: Debug event
+        run: echo "${{ toJson(github.event) }}"
 
       - name: Run tests
         run: dotnet test ./TestProject1/TestProject1.csproj
