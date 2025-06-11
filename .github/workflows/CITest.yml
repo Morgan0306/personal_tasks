@@ -37,8 +37,11 @@ jobs:
         $timestamp = Get-Date -Format "yyyyMMddHHmmss"
         $newDeployFolder = Join-Path $baseDeployPath "release-$timestamp"
 
-        # Copy published files to new versioned folder
-        Copy-Item -Path "./publish/*" -Destination $newDeployFolder -Recurse -Force
+        # 建立新資料夾
+        New-Item -Path $newDeployFolder -ItemType Directory -Force | Out-Null
+
+        # 複製publish下所有內容
+        Copy-Item -Path "./publish\*" -Destination $newDeployFolder -Recurse -Force
 
         # Update IIS site physical path to the new folder
         Import-Module WebAdministration
