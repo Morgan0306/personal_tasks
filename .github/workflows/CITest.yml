@@ -24,7 +24,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Run tests
-      run: dotnet test --no-build --verbosity normal ./TestProject1/TestProject1.csproj
+      run: dotnet test --no-build --configuration Release --verbosity normal ./TestProject1/TestProject1.csproj
 
     - name: Publish project
       run: dotnet publish ./personal_tasks/personal_tasks.csproj -c Release -o ./publish
