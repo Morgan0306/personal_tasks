@@ -1,0 +1,22 @@
+name: Test
+
+on:
+  workflow_run:
+    workflows: [Build]
+    types:
+      - completed
+
+jobs:
+  test:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: self-hosted
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with: 
+          name: published-app
+          path: ./publish
+
+      - name: Run tests
+        run: dotnet test ./TestProject1/TestProject1.csproj
