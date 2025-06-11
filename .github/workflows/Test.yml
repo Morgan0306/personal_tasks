@@ -12,8 +12,5 @@ jobs:
     runs-on: self-hosted
   
     steps:
-      - name: Debug event
-        run: echo "${{ toJson(github.event) }}"
-
       - name: Run tests
         run: dotnet test ./TestProject1/TestProject1.csproj
